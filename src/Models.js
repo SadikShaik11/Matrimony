@@ -1,6 +1,7 @@
 import { userModel } from "./modules/users/Users.model.js";
 import { LanguageModel } from "./global/global.model.js";
 import { OtpModel } from "./modules/otp/otp.model.js";
+import { userProfileModel } from "./modules/profile/UserProfile.model.js";
 export const LANG_CONSTANTS = {
     "GLOBAL": "gl",
     "HINDI": "hi",
@@ -17,10 +18,12 @@ export const LANG_CONSTANTS = {
 }
 
 
-export const DB_CONSTANTS = {
+export const DB_MODEL_CONSTANTS = {
     USER_MODEL: userModel,
     LANGUAGE_MODEL: LanguageModel,
-    OTP_MODEL: OtpModel
+    OTP_MODEL: OtpModel,
+    USER_PROFILE_MODEL: userProfileModel
+
 }
 
 export default [userModel, LanguageModel]

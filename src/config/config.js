@@ -11,7 +11,9 @@ const envVarsSchema = Joi.object({
     PORT: Joi.number().default(3000),
     MONGODB_URL: Joi.string().required().description('Mongo DB url'),
     FAST_2_SMS_URL: Joi.string(),
-    FAST_2_SMS_KEY: Joi.string()
+    FAST_2_SMS_KEY: Joi.string(),
+    JWT_SECRET: Joi.string(),
+    TOKEN_EXPIRY: Joi.string(),
     // Add other variables as needed
 }).unknown();
 

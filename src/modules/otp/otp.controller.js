@@ -19,7 +19,7 @@ class OtpController extends Master {
             const response = await otpService.sendSMS(req.body.receiverNumber);
             res.status(this.HTTP_STATUS.CREATED).json(response);
         } catch (error) {
-            console.log(error);
+
             this.logError("Error sending OTP:", error);
             if (error instanceof ApiError) {
                 res.status(error.statusCode).json({ error: error.message });
@@ -39,7 +39,7 @@ class OtpController extends Master {
             const response = await otpService.verifyOtp(req.body.otp, req.body.otpId);
             res.status(this.HTTP_STATUS.OK).json(response);
         } catch (error) {
-            console.log(error);
+
             this.logError("Error verifying OTP:", error);
             if (error instanceof ApiError) {
                 res.status(error.statusCode).json({ error: error.message });

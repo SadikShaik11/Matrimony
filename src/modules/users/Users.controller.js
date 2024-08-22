@@ -12,7 +12,7 @@ class UserController extends Master {
             const response = await UserService.signUp(req.body);
             res.status(this.HTTP_STATUS.CREATED).json(response);
         } catch (error) {
-            console.log(error)
+
             this.logError("Error adding user:", error);
             if (error instanceof ApiError) {
                 res.status(error.statusCode).json({ error: error.message });

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import app from './index.js';
 import config from './src/config/config.js';
 import logger from './src/config/logger.js';
-import { DB_CONSTANTS } from './src/Models.js';
+import { DB_MODEL_CONSTANTS } from './src/Models.js';
 
 let server;
 
@@ -16,7 +16,7 @@ const connectToDatabases = async () => {
         logger.info(`Connected to master database \n URL :: ${config.mongoose.url}`);
 
         // Fetch tenant databases
-        const tenant_dbs = await DB_CONSTANTS.LANGUAGE_MODEL.find();
+        const tenant_dbs = await DB_MODEL_CONSTANTS.LANGUAGE_MODEL.find();
         DatabaseConnections['gl'] = masterDb
         databaseCodes['global'] = 'gl'
         await Promise.all(

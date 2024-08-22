@@ -2,7 +2,7 @@ import axios from "axios";
 import Master from "../../config/Master.class.js";
 import config from "../../config/config.js";
 
-import { DB_CONSTANTS, LANG_CONSTANTS } from "../../Models.js";
+import { DB_MODEL_CONSTANTS, LANG_CONSTANTS } from "../../Models.js";
 import { DatabaseConnections } from "../../../server.js";
 
 class SMS extends Master {
@@ -34,13 +34,13 @@ class SMS extends Master {
                 },
             });
 
-            const DbConnection = DB_CONSTANTS.OTP_MODEL(DatabaseConnections[LANG_CONSTANTS.GLOBAL])
+            const DbConnection = DB_MODEL_CONSTANTS.OTP_MODEL(DatabaseConnections[LANG_CONSTANTS.GLOBAL])
             const otpResponse = await DbConnection.create({
                 otp: OTP,
                 otpId: OTPID,
                 phoneNumber: receiverNumber,
             })
-            console.log(otpResponse);
+
 
             return { message: 'otp sent successful !', otpId: OTPID }
         } catch (error) {
@@ -61,12 +61,13 @@ class SMS extends Master {
     async verifyOtp(otp, OTPid) {
         try {
             this.logger.info("inside otp module : verify otp service");
-            const DbConnection = DB_CONSTANTS.OTP_MODEL(DatabaseConnections[LANG_CONSTANTS.GLOBAL])
+            const DbConnection = DB_MODEL_CONSTANTS.OTP_MODEL(DatabaseConnections[LANG_CONSTANTS.GLOBAL])
             const savedOTP = await DbConnection.findOne({
                 otp: otp,
                 otpId: OTPid,
             })
             if (savedOTP?.otpId == OTPid) {
+                await DbConnection.updateOne({})
                 return { success: true, message: 'Otp verification is successful' }
             } else if (!savedOTP) {
                 return { success: true, message: 'Otp is expired' }

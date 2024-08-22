@@ -24,14 +24,14 @@ const userSchema = mongoose.Schema({
     refreshToken: {
         type: String
     },
-    code: {
+    regionId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'languages'
     }
 });
 
 const userModel = (connection) => {
-    return connection.model('user', userSchema);
+    return connection.model('users', userSchema);
 };
 export {
     userModel,
