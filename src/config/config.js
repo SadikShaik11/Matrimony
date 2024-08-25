@@ -14,6 +14,10 @@ const envVarsSchema = Joi.object({
     FAST_2_SMS_KEY: Joi.string(),
     JWT_SECRET: Joi.string(),
     TOKEN_EXPIRY: Joi.string(),
+    CLOUDINARY_SECRET_KEY: Joi.string(),
+    CLOUDINARY_API_KEY: Joi.string(),
+    CLOUDINARY_CLOUD_NAME: Joi.string(),
+
     // Add other variables as needed
 }).unknown();
 
@@ -33,6 +37,9 @@ export default {
     JWT_SECRET: envVars.JWT_SECRET,
     FAST_2_SMS_URL: envVars.FAST_2_SMS_URL,
     FAST_2_SMS_KEY: envVars.FAST_2_SMS_KEY,
+    CLOUDINARY_SECRET_KEY: envVars.CLOUDINARY_SECRET_KEY,
+    CLOUDINARY_API_KEY: envVars.CLOUDINARY_API_KEY,
+    CLOUDINARY_CLOUD_NAME: envVars.CLOUDINARY_CLOUD_NAME,
     mongoose: {
         url: envVars.MONGODB_URL,
         options: {

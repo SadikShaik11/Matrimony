@@ -61,7 +61,6 @@ class UserProfileService extends Master {
      */
     async updateUserProfile(req, profileId) {
         try {
-            console.log(profileId)
             this.logger.info("UserProfileService: Inside updateUserProfile Method");
 
             const databaseConnection = DatabaseConnections[req.user.region];

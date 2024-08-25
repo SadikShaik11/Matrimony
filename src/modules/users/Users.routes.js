@@ -9,6 +9,8 @@ const router = Router()
  * 
  * @ Signup 
  * @description : signing up a new user account
+ * @author : sadik 
+ * @email : sadikshaik139@gmial.com
  * 
  */
 router.post("/signup",
