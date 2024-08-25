@@ -1,6 +1,8 @@
 
 /**
  * @module userProfile router
+ * @author : sadik 
+ * @email : sadikshaik139@gmial.com
  */
 import { Router } from 'express'
 import catchAsync from "../../config/catchAsync.js"

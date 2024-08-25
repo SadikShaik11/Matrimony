@@ -19,7 +19,6 @@ class ImageUpload extends Master {
                 return res.status(this.HTTP_STATUS.BAD_REQUEST).json({ message: 'No file uploaded' });
             }
 
-            console.log(req.file);
 
             // Save the image data to the database
             const databaseConnection = DatabaseConnections[req.user.region];

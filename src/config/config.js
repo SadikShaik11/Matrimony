@@ -10,6 +10,7 @@ const envVarsSchema = Joi.object({
     NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
     PORT: Joi.number().default(3000),
     MONGODB_URL: Joi.string().required().description('Mongo DB url'),
+    PROD_DB: Joi.string().description('Mongo DB url production'),
     FAST_2_SMS_URL: Joi.string(),
     FAST_2_SMS_KEY: Joi.string(),
     JWT_SECRET: Joi.string(),
@@ -29,6 +30,7 @@ if (error) {
     throw new Error(`Config validation error: ${error.message}`);
 }
 // Export the validated configurations
+const DB_URL = (envVars.NODE_ENV == 'production') ? envVars.PROD_DB : envVars.MONGODB_URL
 export default {
     env: envVars.NODE_ENV,
     port: envVars.PORT,
@@ -41,7 +43,7 @@ export default {
     CLOUDINARY_API_KEY: envVars.CLOUDINARY_API_KEY,
     CLOUDINARY_CLOUD_NAME: envVars.CLOUDINARY_CLOUD_NAME,
     mongoose: {
-        url: envVars.MONGODB_URL,
+        url: DB_URL,
         options: {
             //  useCreateIndex: true,
             // useNewUrlParser: true,
