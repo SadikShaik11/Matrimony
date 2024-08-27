@@ -52,6 +52,33 @@ app.options('*', cors());
 //v1 api routes
 app.use('/v1/api/', routes);
 
+app.use('/', (req, res) => {
+    res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: black
+                padding: 50px;
+            }
+            h1 {
+                color: #4CAF50;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to My Vivaah Vedika!</h1>
+        <p>Explore the features and enjoy your stay!</p>
+    </body>
+    </html>
+    `)
+})
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
